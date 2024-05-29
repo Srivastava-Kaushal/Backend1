@@ -136,8 +136,8 @@ const logoutUser=asynHandler(async(req,res)=>{
     await User.findByIdAndUpdate(
         req.user._id,
         {
-            $set:{
-                refreshToken:undefined
+            $unset:{
+                refreshToken:1
             }
         },
         {
@@ -343,7 +343,7 @@ const getUserChannelProfile=asynHandler(async(req,res)=>{
         },
         {
             $project:{
-                fullName=1,
+                fullName:1,
                 username:1,
                 avatar:1,
                 coverImage:1,
@@ -365,9 +365,10 @@ const getUserChannelProfile=asynHandler(async(req,res)=>{
 })
 
 const getWatchHistory=asynHandler(async(req,res)=>{
-    const user=await User.aggregate({
+    const user=await User.aggregate([
+    {
         $match:{
-            _id:req.user?._id
+            _id:req.user._id
         }
     },
     {
@@ -376,14 +377,14 @@ const getWatchHistory=asynHandler(async(req,res)=>{
             localField:"watchHistory",
             foreignField:"_id",
             as:"watchHistory",
-            pipelines:[
+            pipeline:[
                 {
                     $lookup:{
                         from:"users",
                         localField:"owner",
                         foreignField:"_id",
                         as:"owner",
-                        pipelines:[
+                        pipeline:[
                             {
                                 $project:{
                                     fullName:1,
@@ -405,7 +406,8 @@ const getWatchHistory=asynHandler(async(req,res)=>{
                 }
             ]
         }
-    })   
+    }
+    ])   
     return res
     .status(200)
     .json(

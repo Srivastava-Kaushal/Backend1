@@ -8,6 +8,7 @@ import {
     changeCurrentPassword,
     updateAccountDetails, 
     updateUserAvatar, 
+    updateUserCoverImage,
     getUserChannelProfile, 
     getWatchHistory 
 } from "../controllers/user.conroller.js";
