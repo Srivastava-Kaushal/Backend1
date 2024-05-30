@@ -3,13 +3,13 @@
 
 ## Introduction
 
-Welcome to the YouTubeTwitterbackend project! This project seamlessly integrates the core functionalities of YouTube with the dynamic tweet feature of Twitter.Comprehensive information about this project in the provided documentation below.
+Welcome to the YouTubeTwitterbackend project! This project seamlessly integrates the core functionalities of YouTube with the dynamic tweet feature of Twitter. Comprehensive information about this project in the provided documentation below.
 
 ## Important links
 
 | Content            | Link                                                                        |
 | -------------------| ----------------------------------------------------------------------------|
-| API Documentation  | adding soon... |
+| API Documentation  | [click here](https://documenter.getpostman.com/view/35017574/2sA3Qv7VtQ) |
 | Model              | [click here ](https://app.eraser.io/workspace/kYIgEUp3Vj22pHXFFFIy)         |
 
 ## Features
