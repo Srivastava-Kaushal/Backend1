@@ -3,13 +3,13 @@
 
 ## Introduction
 
-Welcome to the YouTube + Twitter backend project! This project seamlessly integrates the core functionalities of YouTube with the dynamic tweet feature of Twitter. Below, you'll find comprehensive information about this project in the provided documentation.
+Welcome to the YouTubeTwitterbackend project! This project seamlessly integrates the core functionalities of YouTube with the dynamic tweet feature of Twitter. Below, you'll find comprehensive information about this project in the provided documentation.
 
 ## Important links
 
 | Content            | Link                                                                        |
 | -------------------| ----------------------------------------------------------------------------|
-| API Documentation  | [click here](https://documenter.getpostman.com/view/28570926/2s9YsNdVwW)    |
+| API Documentation  | adding soon... |
 | Model              | [click here ](https://app.eraser.io/workspace/kYIgEUp3Vj22pHXFFFIy)         |
 
 ## Features
@@ -75,18 +75,18 @@ Welcome to the YouTube + Twitter backend project! This project seamlessly integr
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/Srivastava-Kaushal/YoutubeTweeterBackend.git
+    git clone https://github.com/Srivastava-Kaushal/YoutubeTwitterBackend.git
     ```
 
 2. **Install dependencies:**
 
     ```bash
-    cd YoutubeTweeterBackend
+    cd YoutubeTwitterBackend
     npm install
     ```
 
 3. **Set up environment variables:**
-    Create a .env in root of project and fill in the required values in the .env file using .env.sample file
+    Create a .env in root of project and fill in the required values in the .env file
 
 4. **Start the server:**
 
