@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Welcome to the YouTubeTwitterbackend project! This project seamlessly integrates the core functionalities of YouTube with the dynamic tweet feature of Twitter. Below, you'll find comprehensive information about this project in the provided documentation.
+Welcome to the YouTubeTwitterbackend project! This project seamlessly integrates the core functionalities of YouTube with the dynamic tweet feature of Twitter.Comprehensive information about this project in the provided documentation below.
 
 ## Important links
 
@@ -86,6 +86,7 @@ Welcome to the YouTubeTwitterbackend project! This project seamlessly integrates
     ```
 
 3. **Set up environment variables:**
+
     Create a .env in root of project and fill in the required values in the .env file
 
 4. **Start the server:**
