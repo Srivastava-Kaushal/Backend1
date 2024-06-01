@@ -1,4 +1,4 @@
-import { asynHandler } from "../utils/asyncHandler.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js"
 import { User } from "../models/user.model.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
@@ -19,7 +19,7 @@ const generateAccessAndRefreshToken=async(userId)=>{
     }
 }
 
-const registerUser= asynHandler(async(req,res)=>{
+const registerUser= asyncHandler(async(req,res)=>{
     // get user details from frontend
     // validation- not empty
     // check if user already exists : username ,email
@@ -79,7 +79,7 @@ const registerUser= asynHandler(async(req,res)=>{
         new ApiResponse(201,createdUser,"User registered Successfully")
     )
 })
-const loginUSer=asynHandler(async(req,res)=>{
+const loginUSer=asyncHandler(async(req,res)=>{
     //req body->data
     //username or email
     //find by user
@@ -129,7 +129,7 @@ const loginUSer=asynHandler(async(req,res)=>{
     )
 })
 
-const logoutUser=asynHandler(async(req,res)=>{
+const logoutUser=asyncHandler(async(req,res)=>{
     //get user from req
     //remove refresh token
     //send response
@@ -156,7 +156,7 @@ const logoutUser=asynHandler(async(req,res)=>{
     .json(new ApiResponse(200,{},"User Logged Out successfully"))
 })
 
-const refreshAccessToken=asynHandler(async(req,res)=>{
+const refreshAccessToken=asyncHandler(async(req,res)=>{
     const incomingRefreshToken=req.cookies.refreshToken||req.body.refreshToken
     if(!incomingRefreshToken){
         throw new ApiError(401,"unauthorized request")
@@ -192,7 +192,7 @@ const refreshAccessToken=asynHandler(async(req,res)=>{
     }
 })
 
-const changeCurrentPassword=asynHandler(async(req,res)=>{
+const changeCurrentPassword=asyncHandler(async(req,res)=>{
     const {oldPassword,newPassword}=req.body;
     const user=await User.findById(req.user?._id)
     const isPasswordCorrect=await user.isPasswordCorrect(oldPassword)
@@ -207,13 +207,13 @@ const changeCurrentPassword=asynHandler(async(req,res)=>{
     
 })
 
-const getCurrentUser=asynHandler(async(req,res)=>{
+const getCurrentUser=asyncHandler(async(req,res)=>{
     return res
     .status(200)
     .json(new ApiResponse(200,req.user,"Current User fetched successfully"))
 })
 
-const updateAccountDetails=asynHandler(async(req,res)=>{
+const updateAccountDetails=asyncHandler(async(req,res)=>{
     const {fullName,email,username}=req.body;
     if(!fullName||!email){
         throw new ApiError(400,"All fields are required")
@@ -240,7 +240,7 @@ const updateAccountDetails=asynHandler(async(req,res)=>{
     .json(new ApiResponse(200,user,"Account details updated successfully"))
 })
 
-const updateUserAvatar=asynHandler(async(req,res)=>{
+const updateUserAvatar=asyncHandler(async(req,res)=>{
     const avatarLocalPath=req.file?.path;
     if(!avatarLocalPath){
         throw new ApiError(400,"Avatar is required")
@@ -267,7 +267,7 @@ const updateUserAvatar=asynHandler(async(req,res)=>{
     )
 })
 
-const updateUserCoverImage=asynHandler(async(req,res)=>{
+const updateUserCoverImage=asyncHandler(async(req,res)=>{
     const coverImageLocalPath=req.file?.path
     if(!coverImageLocalPath){
         throw new ApiError(400,"Cover image is required")
@@ -294,7 +294,7 @@ const updateUserCoverImage=asynHandler(async(req,res)=>{
     )
 })
 
-const getUserChannelProfile=asynHandler(async(req,res)=>{
+const getUserChannelProfile=asyncHandler(async(req,res)=>{
     const {username}=req.params
     if(!username?.trim()){
         throw new ApiError(400,"Username is missing")
@@ -364,7 +364,7 @@ const getUserChannelProfile=asynHandler(async(req,res)=>{
     )
 })
 
-const getWatchHistory=asynHandler(async(req,res)=>{
+const getWatchHistory=asyncHandler(async(req,res)=>{
     const user=await User.aggregate([
     {
         $match:{
