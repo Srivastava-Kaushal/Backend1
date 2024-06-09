@@ -22,23 +22,52 @@ const uploadOnCloudinary= async(localFilePath) =>{
         return null
     }
 }
-
-const deleteOnCloudinary=async(url)=>{
+const deleteOnCloudinaryImg = async (url) => {
     try {
-        const publicId=url.split("/").pop().split(".")[0];
-        if(!publicId){
-            console.log("No publicId is available")
-            return null
+        // Extract the public ID from the URL
+        const urlParts = url.split('/');
+        const publicIdWithExt = urlParts[urlParts.length - 1];
+        const publicId = publicIdWithExt.split('.')[0];
+        // Check if publicId is available
+        if (!publicId) {
+            console.log("No publicId is available");
+            return null;
         }
-        await cloudinary.uploader.destroy(publicId,{
-            resource_type:"auto"
-        
-        })
-        .then((result)=>console.log(result));
+
+        // Perform the deletion
+        const result = await cloudinary.uploader.destroy(publicId, {
+            resource_type: "image"
+        });
+
+        return result;
+
     } catch (error) {
         console.log(error.message);
     }
-}
+};
+const deleteOnCloudinaryVideo = async (url) => {
+    try {
+        // Extract the public ID from the URL
+        const urlParts = url.split('/');
+        const publicIdWithExt = urlParts[urlParts.length - 1];
+        const publicId = publicIdWithExt.split('.')[0];
+        // Check if publicId is available
+        if (!publicId) {
+            console.log("No publicId is available");
+            return null;
+        }
+
+        // Perform the deletion
+        const result = await cloudinary.uploader.destroy(publicId, {
+            resource_type: "video"
+        });
+        return result;
+
+    } catch (error) {
+        console.log(error.message);
+    }
+};
 export {uploadOnCloudinary,
-    deleteOnCloudinary
+    deleteOnCloudinaryImg,
+    deleteOnCloudinaryVideo
 }
