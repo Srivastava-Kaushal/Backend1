@@ -21,7 +21,7 @@ const addComment = asyncHandler(async (req, res) => {
             throw new ApiError(400,"Comment text is required")
         }
         const comment = await Comment.create({
-            text,
+            content:text,
             video: videoId,
             owner: req.user._id
         })
@@ -53,7 +53,7 @@ const updateComment = asyncHandler(async (req, res) => {
         }
         const comment=await Comment.findByIdAndUpdate(
             commentId,
-            {text:updatedComment},
+            {content:updatedComment},
             {new:true}
         )
         if(!comment){
